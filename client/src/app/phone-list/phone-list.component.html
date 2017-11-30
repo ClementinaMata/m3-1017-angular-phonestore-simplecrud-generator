@@ -1,0 +1,10 @@
+<h1> Phone list </h1>
+<h1 *ngIf="phones.length > 0">En oferta: {{ phones[0].name }}</h1>
+<div class="phones">
+  <div *ngFor="let phone of phones" class="phone">
+    <img [src]="phone.image" />
+    <h3> {{ phone.name }} </h3>
+    <p> {{ phone.brand }} </p>
+    <a [routerLink]="['phone', phone._id]"> View Details </a>
+  </div>
+</div>

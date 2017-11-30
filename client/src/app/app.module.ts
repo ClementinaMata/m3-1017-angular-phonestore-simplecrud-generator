@@ -4,17 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import {RouterModule} from '@angular/router';
+
+import {routes} from './routes';
+import { PhoneListComponent } from './phone-list/phone-list.component';
+import { PhoneDetailsComponent } from './phone-details/phone-details.component';
+
+import {PhoneService} from '../services/phone.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhoneListComponent,
+    PhoneDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [PhoneService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

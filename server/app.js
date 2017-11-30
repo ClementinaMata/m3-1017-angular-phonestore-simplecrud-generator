@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const index = require('./routes/index');
-const api = require('./routes/api');
+const apiFor = require('./routes/api');
 const cors = require('cors');
 
 const app = express();
@@ -31,7 +31,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/api/phones', api);
+app.use('/api/phones', apiFor(require('./models/Phone')));
+app.use('/api/comment', apiFor(require('./models/Comment')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
